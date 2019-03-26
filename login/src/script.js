@@ -13,6 +13,7 @@ window.addEventListener('load', function() {
   var config;
   var webAuth;
   var databaseConnection = 'Username-Password-Authentication';
+  var signupPage = false;
   if (true) { // If you want to debug this page locally, set this to false
     config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
     var params = Object.assign({
@@ -26,6 +27,7 @@ window.addEventListener('load', function() {
       responseType: 'code'
     }, config.internalOptions);
     webAuth = new auth0.WebAuth(params);
+    signupPage = config.extraParams.mode === 'signUp';
   }
   
   /*************************/
@@ -94,7 +96,7 @@ window.addEventListener('load', function() {
     form.classList.add('hidden');
     signupForm.classList.remove('hidden');
   }
-  showLogin();
+  signupPage ? showSignup() : showLogin();
   signupLink.addEventListener('click', showSignup);
   loginLink.addEventListener('click', showLogin);
 
