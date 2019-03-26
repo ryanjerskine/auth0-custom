@@ -16,11 +16,10 @@ window.addEventListener('load', function() {
   if (true) { // If you want to debug this page locally, set this to false
     config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
     var params = Object.assign({
-      /* additional configuration needed for use of custom domains
       overrides: {
         __tenant: config.auth0Tenant,
-        __token_issuer: 'YOUR_CUSTOM_DOMAIN'
-      }, */
+        __token_issuer: 'https://www.ryanerskine.dev'
+      },
       domain: config.auth0Domain,
       clientID: config.clientID,
       redirectUri: config.callbackURL,
