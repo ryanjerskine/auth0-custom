@@ -133,7 +133,7 @@
       var webAuth;
       var databaseConnection = 'Username-Password-Authentication';
       if (true) { // If you want to debug this page locally, set this to false
-        config = JSON.parse(decodeURIComponent(escape(window.atob('@@config'))));
+        config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
         var params = Object.assign({
           /* additional configuration needed for use of custom domains
           overrides: {
