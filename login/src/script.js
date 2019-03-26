@@ -4,7 +4,6 @@ window.addEventListener('load', function() {
   var nameField = document.getElementById('name');
   var form = document.getElementById('login-form');
   var signupForm = document.getElementById('signup-form');
-  var animatedElemes = document.getElementsByClassName('animatedjs');
   var signupLink = document.getElementById('signup-link');
   var loginLink = document.getElementById('login-link');
 
@@ -14,7 +13,7 @@ window.addEventListener('load', function() {
   var config;
   var webAuth;
   var databaseConnection = 'Username-Password-Authentication';
-  if (false) { // If you want to debug this page locally, set this to false
+  if (true) { // If you want to debug this page locally, set this to false
     config = JSON.parse(decodeURIComponent(escape(window.atob('@@config'))));
     var params = Object.assign({
       /* additional configuration needed for use of custom domains
@@ -99,4 +98,22 @@ window.addEventListener('load', function() {
   showLogin();
   signupLink.addEventListener('click', showSignup);
   loginLink.addEventListener('click', showLogin);
+
+  /*********************/
+  /*  Floating labels  */
+  /*********************/
+  function loginKeypress(e) {
+    if (e.target.value && e.target.value.length && e.target.parentElement) {
+      e.target.parentElement.classList.add('has-value');
+    }
+    else if (e.target.parentElement) {
+      e.target.parentElement.classList.remove('has-value');
+    }
+  }
+  usernameField.addEventListener('keyup', loginKeypress);
+  usernameField.addEventListener('blur', loginKeypress);
+  passwordField.addEventListener('keyup', loginKeypress);
+  passwordField.addEventListener('blur', loginKeypress);
+  nameField.addEventListener('keyup', loginKeypress);
+  nameField.addEventListener('blur', loginKeypress);
 });
